@@ -1,0 +1,94 @@
+1
+2	192.168.1.24
+3	192.168.1.44
+4 	192.168.1.35
+
+http://bit.ly/3ak76YJ
+=================================
+35.154.63.186
+
+Demo 1 
+Download and install Elasticsearch on your local machine
+https://www.devopsschool.com/tutorial/elastic/elastic-search-single-node-
+
+installation-and-verification-guide.html
+
+Step 1 - Download a ElasticSearch Package from
+https://www.elastic.co/downloads/elasticsearch
+
+Step 2 - Extract the tar compressed file
+
+Step 3 - Understand a structure of packe
+$ ls -1
+bin			# START and STOP SCRIPT
+config			# Config file of elasticsearch i.e elasticsearch.yml
+jdk			# Packed JRE for elasticsearch
+lib			# Jar file for elasticsearch products
+LICENSE.txt
+logs			# Contains a log of elasticsearch 
+modules		
+NOTICE.txt
+plugins			# elasticsearch plugins
+README.asciidoc
+
+Step 4 - Spend some time and become familiar with elasticsearch.yml for 
+
+various sections such as following....
+Cluster
+Node
+Paths
+Memory
+Network
+Discovery
+Gateway
+Various
+
+Step 5 - Start a Elastic Search.
+
+=========================================
+$ useradd -s /bin/bash -c "ElasticSearc" -U es
+$ passwd es
+$ su es
+
+
+Demo 2 - Working with API
+https://www.devopsschool.com/blog/what-are-the-method-to-interact-with-
+
+elastic-search/
+
+https://www.devopsschool.com/tutorial/elastic/elastic-search-using-rest-api-
+
+curl.html
+
+
+Demo 3 - Working with CRUD
+https://www.devopsschool.com/tutorial/elastic/elasticsearch-workflow-crud-
+
+create-read-update-delete.html
+
+
+Qa
+===========
+
+TOOLS ----> How to work with this tool?
+How to build TOOLS?
+
+BEATS --> LOG -> ELASTICSEARCH <------ KIBANA
+4L -> -?BEATS --> LOG -> ELASTICSEARCH <------ KIBANA
+						RUN A SAME with DSL - 
+						REPORT
+
+BEATS --> LOG -> ELASTICSEARCH <------ HUMAN (CURL)
+
+Demo 3 - Working with BULK Operations.
+https://www.devopsschool.com/tutorial/elastic/elastic-search-bulk-
+
+operation.html
+
+Demp 4 - DLS part 1
+https://www.devopsschool.com/tutorial/elastic/elastic-search-query-dsl-
+
+guide-introduction-part1.html
+
+
+

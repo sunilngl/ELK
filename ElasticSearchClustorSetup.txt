@@ -1,0 +1,180 @@
+Roles of ElasticSearch Clustor
+======================================
+Master Node - 13.234.67.10
+Client Node - 13.127.218.43
+Data node - 13.126.48.100
+
+
+Common Installation on Each Node.
+=================================
+Step 1. Install Elastic Search
+Step 2. File Descriptor
+Step 3. HEAP Size
+
+
+Step 1. Download and Extract(Install) Elastic Search (NOT AS A ROOT)
+========================================
+13.234.67.10(Master) + 13.127.218.43(Client) + 13.126.48.100(Data)
+--------------
+$ cd 
+$ sudo yum install wget -y
+$ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.0-linux-x86_64.tar.gz
+$ tar -zxvf elasticsearch-7.6.0-linux-x86_64.tar.gz
+$ ls
+
+Step 2. Do a Hostname and DNS resolving work.
+PUB			PVT
+13.234.67.10		172.31.0.107
+13.127.218.43		172.31.14.88
+13.126.48.100		172.31.13.85
+
+IN 13.234.67.10(Master)
+=======
+$ sudo hostnamectl set-hostname es-master01
+$ hostname
+$ sudo vi /etc/hosts
+
+172.31.0.107	es-master01
+172.31.14.88	es-client01
+172.31.13.85	es-data01
+
+IN 13.127.218.43(Client)
+=======
+$ sudo hostnamectl set-hostname es-client01
+$ hostname
+$ sudo vi /etc/hosts
+
+172.31.0.107	es-master01
+172.31.14.88	es-client01
+172.31.13.85	es-data01
+
+
+IN 13.126.48.100(Data)
+=======
+$ sudo hostnamectl set-hostname es-data01
+$ hostname
+$ sudo vi /etc/hosts
+
+172.31.0.107	es-master01
+172.31.14.88	es-client01
+172.31.13.85	es-data01
+
+
+Step 3. Change File Descriptor Limit - ALL MACHINE
+=========================================
+$ sudo vi /etc/sysctl.conf
+vm.max_map_count=262144
+$ sudo sysctl -p
+$ sudo vi /etc/security/limits.conf
+ec2-user  -  nofile  65535
+##### IMP ####
+OPEN NEW SESSION AFTER THIS CHANGE.
+
+Step 3. Set HEAP SIZE - ALL MACHINE
+FILE - /home/ec2-user/elasticsearch-7.6.0/config/jvm.options
+export ES_HEAP_SIZE=2024m
+echo $ES_HEAP_SIZE
+export ES_JAVA_OPTS="-Xms1000m -Xmx2000m" /home/ec2-user/elasticsearch-7.6.0/bin/elasticsearch
+
+$ cd /home/ec2-user/elasticsearch-7.6.0/config
+$ vi jvm.options # Make -Xmx1g to -Xmx1g
+$ more /home/ec2-user/elasticsearch-7.6.0/config/jvm.options | grep Xm
+CLIENT
+.........
+-Xms1g
+-Xmx1g
+
+Master
+........
+-Xms2g
+-Xmx2g
+
+DATA
+.......
+-Xms1g
+-Xmx1g
+
+
+
+
+Step 4. DO Modification in elasticsearch.yml
+LOCATION - /home/ec2-user/elasticsearch-7.6.0/config/elasticsearch.yml
+
+IN 13.234.67.10(Master)
+==================================
+$ vi /home/ec2-user/elasticsearch-7.6.0/config/elasticsearch.yml
+
+cluster.name: devopsschool
+node.name: es-master01
+node.master: true
+node.data: false
+network.host: 172.31.0.107
+#discovery.seed_hosts: ["172.31.0.107", "172.31.14.88", "172.31.13.85"]
+#or
+discovery.seed_hosts: ["es-master01", "es-client01", "es-data01"]
+#cluster.initial_master_nodes: ["172.31.0.107"]
+#or
+cluster.initial_master_nodes: ["es-master01"]
+
+IN 13.127.218.43(Client)
+=======
+$ vi /home/ec2-user/elasticsearch-7.6.0/config/elasticsearch.yml
+
+cluster.name: devopsschool
+node.name: es-client01
+node.master: false
+node.data: false
+network.host: 172.31.14.88
+#discovery.seed_hosts: ["172.31.0.107", "172.31.14.88", "172.31.13.85"]
+#or
+discovery.seed_hosts: ["es-master01", "es-client01", "es-data01"]
+#cluster.initial_master_nodes: ["172.31.0.107"]
+#or
+cluster.initial_master_nodes: ["es-master01"]
+
+
+IN 13.126.48.100(Data)
+=======
+$ vi /home/ec2-user/elasticsearch-7.6.0/config/elasticsearch.yml
+
+cluster.name: devopsschool
+node.name: es-data01
+node.master: false
+node.data: true
+network.host: 172.31.13.85
+#discovery.seed_hosts: ["172.31.0.107", "172.31.14.88", "172.31.13.85"]
+#or
+discovery.seed_hosts: ["es-master01", "es-client01", "es-data01"]
+#cluster.initial_master_nodes: ["172.31.0.107"]
+#or
+cluster.initial_master_nodes: ["es-master01"]
+
+
+Step 5. Start Elastic Search in ALL NODES
+$ cd /home/ec2-user/elasticsearch-7.6.0/bin
+$ ./elasticsearch -d -p pid
+$ ps -eaf | grep elastic
+
+
+How to verify?
+============================
+curl http://172.31.0.107:9200
+curl http://172.31.14.88:9200
+curl http://172.31.13.85:9200
+
+curl -X GET "172.31.0.107:9200/_cat/nodes?v"
+curl -X GET "172.31.0.107:9200/_cat/health?v"
+curl -X GET "172.31.0.107:9200/_cat/master?v"
+
+
+
+
+
+FAQ
+===================
+QA - How to add user in sudo list.
+By default, on CentOS, members of the wheel group have sudo privileges.. Use the usermod command to add the user to the 
+
+wheel group.
+$ usermod -aG wheel username
+
