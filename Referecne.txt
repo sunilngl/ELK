@@ -1,0 +1,76 @@
+http://bit.ly/2TBnqgP
+
+Resources
+======================
+Tutorials
+https://www.devopsschool.com/tutorial/
+
+Slides
+https://www.devopsschool.com/slides
+
+PDF
+https://www.devopsschool.com/pdf
+
+QUIZ
+https://www.devopsschool.com/quiz/
+
+Videos
+https://www.devopsschool.com/videos
+
+Notes
+github
+
+How to reach out to me?
+http://rajeshkumar.xyz/
+
+
+
+Elasticsearch Command Lines and their Usage Guide
+https://www.devopsschool.com/blog/elasticsearch-command-lines-and-their-usage-guide/
+
+How to enable Elastic Search REST API Accessible using IP Address?
+https://www.devopsschool.com/blog/how-to-enable-elastic-search-rest-api-accessible-using-ip-address/
+
+How to use elastic search EC2 discovery plugin?
+https://www.devopsschool.com/blog/how-to-use-elastic-search-ec2-discovery-plugin/
+
+How to create sample data to perform searches using elastic search?
+https://www.devopsschool.com/blog/how-to-create-sample-data-to-perform-searches-using-elastic-search/
+
+Understanding the Update API in Elasticsearch
+https://www.devopsschool.com/blog/understanding-the-update-api-in-elasticsearch/
+
+Understanding Elasticsearch Index Mapping & Schema
+https://www.devopsschool.com/blog/understanding-elasticsearch-index-mapping-schema/
+
+Find out elastic Search health using _cat/health
+https://www.devopsschool.com/blog/find-out-elastic-search-health-using-_cat-health/
+
+Understanding Elasticsearch Keywords and Terminology
+https://www.devopsschool.com/blog/understanding-elasticsearch-keywords-and-terminology/
+
+Crash Course of Elasticsearch in 10 mins
+https://www.devopsschool.com/blog/crash-course-of-elasticsearch-in-10-mins/
+
+Elasticsearch Web References & Cheatsheet
+https://www.devopsschool.com/blog/elasticsearch-cheatsheet/
+
+Web GUI tools for Elasticsearch cluster
+https://www.devopsschool.com/blog/web-gui-tools-for-elasticsearch-cluster/
+
+What are the method to interact with Elastic Search?
+https://www.devopsschool.com/blog/what-are-the-method-to-interact-with-elastic-search/
+
+https://www.devopsschool.com/tutorial/elastic/elastic-search-bulk-operation.html
+https://www.devopsschool.com/tutorial/elastic/elastic-search-query-dsl-guide-full-text-search-part2.html
+https://www.devopsschool.com/tutorial/elastic/elastic-search-query-dsl-guide-introduction-part1.html
+https://www.devopsschool.com/tutorial/elastic/elastic-search-single-node-installation-and-verification-guide.html
+https://www.devopsschool.com/tutorial/elastic/elastic-search-using-rest-api-curl.html
+https://www.devopsschool.com/tutorial/elastic/elasticsearch-workflow-crud-create-read-update-delete.hl
+
+https://www.devopsschool.com/blog/understanding-rest-http-method-get-post-put-head-delete/
+Understanding REST HTTP method – GET, POST, PUT, HEAD, DELETE
+
+Elasticsearch-ELK Errors and Solutions Database
+https://www.devopsschool.com/blog/elasticsearch-elk-errors-and-solutions-database/
+
